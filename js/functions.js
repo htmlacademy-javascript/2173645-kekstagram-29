@@ -29,4 +29,4 @@ const isWorkingDay = (workStart, workEnd, meetingStart, meetingDuration) => {
   return true;
 };
 
-isWorkingDay();
+isWorkingDay('08:00', '17:30', '14:00', 90);

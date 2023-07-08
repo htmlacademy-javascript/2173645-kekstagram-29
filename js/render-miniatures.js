@@ -1,3 +1,5 @@
+import {renderBigPicture} from './render-big-picture.js';
+
 const picturesContainer = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
@@ -12,6 +14,11 @@ const createMiniature = ({url, description, comments, likes}) => {
 
   userPicture.querySelector('.picture__comments').textContent = comments.length;
   userPicture.querySelector('.picture__likes').textContent = likes;
+
+  userPicture.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    renderBigPicture({url, description, comments, likes});
+  });
 
   fragment.append(userPicture);
 };

@@ -3,7 +3,7 @@ import {getRandomInteger, getRandomArrayElement} from './utils.js';
 const NUMBER_OF_DESCRIPTIONS = 25;
 const AvatarCounter = {
   MIN: 1,
-  MAX: 6
+  MAX: 4
 };
 const LikesCounter = {
   MIN: 15,

@@ -3,4 +3,4 @@ import {createPhotoDescriptions} from './data.js';
 
 const data = createPhotoDescriptions();
 
-renderMiniatures((data));
+renderMiniatures(data);

@@ -1,3 +1,5 @@
+import {isEscapeKey, isNotTextInput} from './utils.js';
+
 const COMMENTS_COUNTER = 5;
 
 const bigPicture = document.querySelector('.big-picture');
@@ -44,7 +46,7 @@ function onCloseButtonClick () {
 }
 
 function onDocumentKeydown (evt) {
-  if(evt.key === 'Escape' && !evt.target.closest('.social__footer-text')) {
+  if(isEscapeKey(evt) && isNotTextInput(evt)) {
     evt.preventDefault();
     closeModal();
   }

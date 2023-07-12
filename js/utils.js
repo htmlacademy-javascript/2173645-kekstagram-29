@@ -1,4 +1,9 @@
-const getRandomInteger = (min, max) => Math.floor(Math.random() * (max + min + 1) + min);
+const getRandomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger, getRandomArrayElement};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+const isNotTextInput = (evt) => (!evt.target.closest('input[type = "text"]') && !evt.target.closest('textarea'));
+
+export {getRandomInteger, getRandomArrayElement, isEscapeKey, isNotTextInput};

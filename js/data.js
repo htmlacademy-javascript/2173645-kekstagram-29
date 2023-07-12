@@ -1,18 +1,22 @@
 import {getRandomInteger, getRandomArrayElement} from './utils.js';
 
 const NUMBER_OF_DESCRIPTIONS = 25;
+
 const AvatarCounter = {
   MIN: 1,
-  MAX: 4
+  MAX: 6
 };
+
 const LikesCounter = {
   MIN: 15,
   MAX: 200
 };
+
 const CommentsCounter = {
   MIN: 0,
   MAX: 30
 };
+
 let commentId = 1;
 let photoId = 1;
 

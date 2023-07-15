@@ -1,4 +1,4 @@
-import {isEscapeKey, isNotTextInput} from './utils.js';
+import {isEscapeKey, isTextInput} from '../utils.js';
 
 const COMMENTS_COUNTER = 5;
 
@@ -46,7 +46,7 @@ function onCloseButtonClick () {
 }
 
 function onDocumentKeydown (evt) {
-  if(isEscapeKey(evt) && isNotTextInput(evt)) {
+  if(isEscapeKey(evt) && !isTextInput(evt)) {
     evt.preventDefault();
     closeModal();
   }

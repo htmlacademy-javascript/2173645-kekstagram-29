@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomArrayElement} from './utils.js';
+import {getRandomInteger, getRandomArrayElement} from '../utils.js';
 
 const NUMBER_OF_DESCRIPTIONS = 25;
 

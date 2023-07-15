@@ -1,6 +1,6 @@
-import {renderMiniatures} from './render-miniatures.js';
-import {createPhotoDescriptions} from './data.js';
-import {initUploadForm} from './upload-image.js';
+import {renderMiniatures} from './pictures/render-miniatures.js';
+import {createPhotoDescriptions} from './pictures/data.js';
+import {initUploadForm} from './upload/upload-image.js';
 
 
 const data = createPhotoDescriptions();

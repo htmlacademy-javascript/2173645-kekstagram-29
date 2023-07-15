@@ -4,6 +4,6 @@ const getRandomArrayElement = (elements) => elements[getRandomInteger(0, element
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-const isNotTextInput = (evt) => (!evt.target.closest('input[type = "text"]') && !evt.target.closest('textarea'));
+const isTextInput = (evt) => (evt.target.closest('input[type="text"]') || evt.target.closest('textarea'));
 
-export {getRandomInteger, getRandomArrayElement, isEscapeKey, isNotTextInput};
+export {getRandomInteger, getRandomArrayElement, isEscapeKey, isTextInput};

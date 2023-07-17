@@ -1,6 +1,6 @@
 import {initScale, resetScale} from './scale.js';
 import {isEscapeKey, isTextInput} from '../utils.js';
-import {pristine} from './validate.js';
+import {validateForm, resetValidation} from './validate.js';
 import {initEffects, updateEffects} from './effects.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
@@ -21,7 +21,7 @@ const closeUploadForm = () => {
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   resetScale();
-  pristine.reset();
+  resetValidation();
   uploadForm.reset();
   updateEffects(currentEffectValue);
 };
@@ -30,9 +30,10 @@ const onUploadInputChange = () => openUploadForm();
 const onUploadCancelClick = () => closeUploadForm();
 const onEffectsListChange = (evt) => updateEffects(evt.target.value);
 const onUploadFormSubmit = (evt) => {
-  if (!pristine.validate()) {
+  if (!validateForm()) {
     evt.preventDefault();
   }
+  return false;
 };
 
 function onDocumentKeydown (evt) {
@@ -49,9 +50,8 @@ const initUploadForm = () => {
   initScale();
   initEffects(currentEffectValue);
   effectsList.addEventListener('change', onEffectsListChange);
-  pristine.validate();
+  validateForm();
 };
-
 
 export{initUploadForm};
 

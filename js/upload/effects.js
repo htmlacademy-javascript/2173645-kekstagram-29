@@ -48,9 +48,6 @@ const imgUploadPreview = document.querySelector('.img-upload__preview img');
 const effectLevelSlider = document.querySelector('.effect-level__slider');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 
-let currentName;
-let currentUnit;
-
 const setContainerState = (value) => {
   if(value === 'none') {
     sliderContainer.classList.add('hidden');
@@ -59,11 +56,8 @@ const setContainerState = (value) => {
   sliderContainer.classList.remove('hidden');
 };
 
-const initEffects = (value) => {
+const createSlider = (value) => {
   const {min, max, step, name, unit} = EFFECTS[value] || EFFECTS.default;
-
-  currentName = name;
-  currentUnit = unit;
 
   setContainerState(value);
 
@@ -79,32 +73,17 @@ const initEffects = (value) => {
 
   effectLevelSlider.noUiSlider.on('update', () => {
     const saturation = effectLevelSlider.noUiSlider.get();
-    imgUploadPreview.style.filter = `${currentName}(${saturation}${currentUnit})`;
+    imgUploadPreview.style.filter = `${name}(${saturation}${unit})`;
     effectLevelValue.value = saturation;
   });
 };
 
-const updateEffects = (value) => {
-  setContainerState(value);
-
-  if(value === 'none') {
-    imgUploadPreview.style.filter = 'none';
-    return;
+const initEffects = (value) => {
+  if (effectLevelSlider.noUiSlider) {
+    effectLevelSlider.noUiSlider.destroy();
   }
 
-  const {min, max, step, name, unit} = EFFECTS[value] || EFFECTS.default;
-
-  currentName = name;
-  currentUnit = unit;
-
-  effectLevelSlider.noUiSlider.updateOptions({
-    range: {
-      min,
-      max,
-    },
-    start: max,
-    step
-  });
+  createSlider(value);
 };
 
-export {initEffects, updateEffects};
+export {initEffects};

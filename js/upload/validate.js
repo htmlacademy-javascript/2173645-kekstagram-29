@@ -12,6 +12,9 @@ const pristine = new Pristine(uploadForm, {
   errorTextParent: 'img-upload__field-wrapper',
 });
 
+const validateForm = () => pristine.validate();
+const resetValidation = () => pristine.reset();
+
 const normalizeTags = (tagsString) => tagsString
   .trim()
   .split(' ')
@@ -46,4 +49,4 @@ pristine.addValidator(
   HASHTAG_REPEAT_MESSAGE
 );
 
-export{pristine};
+export{validateForm, resetValidation};

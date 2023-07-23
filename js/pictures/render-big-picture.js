@@ -1,4 +1,4 @@
-import {isEscapeKey, isTextInput} from '../utils.js';
+import {isEscapeKey, isTextInput} from '../utils/utils.js';
 
 const COMMENTS_COUNTER = 5;
 

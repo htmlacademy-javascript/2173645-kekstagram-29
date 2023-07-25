@@ -1,6 +1,5 @@
 import {isEscapeKey} from './utils.js';
 
-
 let message;
 let isOpen = false;
 

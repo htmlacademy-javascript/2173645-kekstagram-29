@@ -7,7 +7,7 @@ import {showMessage} from '../utils/messages.js';
 
 const SEND_URL = 'https://29.javascript.pages.academy/kekstagram';
 const SUCCESS_SEND_MESSAGE = 'Изображение успешно загружено';
-const SUCCESS_BUTTON_TEXT = 'Круто';
+const SUCCESS_BUTTON_TEXT = 'Круто!';
 const ERROR_SEND_MESSAGE = 'Ошибка загрузки файла';
 const ERROR_BUTTON_TEXT = 'Попробовать ещё раз';
 const ERROR_TYPE_FILE = 'Неподходящее расширение файла';
@@ -73,10 +73,7 @@ const fileChooser = (evt) => {
   showMessage('error', ERROR_TYPE_FILE, ERROR_BUTTON_TEXT);
 };
 
-const onUploadInputChange = (evt) => {
-  fileChooser(evt);
-};
-
+const onUploadInputChange = (evt) => fileChooser(evt);
 const onUploadCancelClick = () => closeUploadForm();
 const onEffectsListChange = (evt) => initEffects(evt.target.value);
 

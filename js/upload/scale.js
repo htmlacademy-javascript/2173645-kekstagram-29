@@ -24,6 +24,7 @@ const onScaleControlSmallerClick = (evt) => {
     changeScale(currentScale);
   }
 };
+
 const onScaleControlBiggerClick = (evt) => {
   evt.preventDefault();
 

@@ -12,6 +12,7 @@ const commentCount = bigPicture.querySelector('.comments-count');
 const bigImg = bigPicture.querySelector('.big-picture__img img');
 const likesCount = bigPicture.querySelector('.likes-count');
 const socialCaption = bigPicture.querySelector('.social__caption');
+const socialFooterText = bigPicture.querySelector('.social__footer-text');
 
 let showingComments = 0;
 let arrayComments;
@@ -61,7 +62,6 @@ const fillComment = ({avatar, name, message}) => {
   return comment;
 };
 
-
 const fillCommentsCounter = () => {
   socialCommentCount.innerHTML = `${showingComments} из <span class="comments-count">${arrayComments.length}</span> комментариев`;
 };
@@ -92,6 +92,7 @@ const fillBigPicture = ({url, description, likes, comments}) => {
 const renderBigPicture = ({url, description, likes, comments}) => {
   arrayComments = comments;
   socialComments.innerHTML = '';
+  socialFooterText.value = '';
   openModal();
   fillBigPicture({url, description, likes, comments});
 };

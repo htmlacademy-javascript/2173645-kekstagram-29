@@ -54,6 +54,7 @@ const setContainerState = (value) => {
     imgUploadPreview.style.filter = 'none';
     return;
   }
+
   sliderContainer.classList.remove('hidden');
 };
 

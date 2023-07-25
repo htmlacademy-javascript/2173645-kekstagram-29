@@ -13,6 +13,7 @@ const getData = (url, onSuccess, onError) => {
       onError(err);
     });
 };
+
 const sendData = (url, body, onSuccess, onError) => {
   fetch(url, {
     method: 'POST',

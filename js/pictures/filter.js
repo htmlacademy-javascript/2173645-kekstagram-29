@@ -41,7 +41,6 @@ const renderFilteredPictures = (id, data) => {
 
 const renderPictures = debounce((id, data) => renderFilteredPictures(id, data), DELAY);
 
-
 const initFilters = (data) => {
   imgFilters.classList.remove('img-filters--inactive');
 

@@ -1,7 +1,7 @@
 import {initScale, resetScale} from './scale.js';
 import {isEscapeKey, isTextInput} from '../utils/utils.js';
 import {validateForm, resetValidation} from './validate.js';
-import {initEffects} from './effects.js';
+import {initEffects, imgUploadPreview} from './effects.js';
 import {sendData} from '../utils/api.js';
 import {showMessage} from '../utils/messages.js';
 
@@ -10,12 +10,15 @@ const SUCCESS_SEND_MESSAGE = 'Изображение успешно загруж
 const SUCCESS_BUTTON_TEXT = 'Круто';
 const ERROR_SEND_MESSAGE = 'Ошибка загрузки файла';
 const ERROR_BUTTON_TEXT = 'Попробовать ещё раз';
+const ERROR_TYPE_FILE = 'Неподходящее расширение файла';
+const FILE_TYPES = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadInput = uploadForm.querySelector('.img-upload__input');
 const uploadOverlay = uploadForm.querySelector('.img-upload__overlay');
 const uploadCancel = uploadForm.querySelector('.img-upload__cancel');
 const effectsList = uploadForm.querySelector('.img-upload__effects');
+const effectsPreviews = uploadForm.querySelectorAll('.effects__preview');
 const currentEffectValue = uploadForm.querySelector('input:checked').value;
 const imgUploadSubmit = uploadForm.querySelector('.img-upload__submit');
 
@@ -50,7 +53,30 @@ const errorUpload = () => {
   showMessage('error', ERROR_SEND_MESSAGE, ERROR_BUTTON_TEXT);
 };
 
-const onUploadInputChange = () => openUploadForm();
+const fileChooser = (evt) => {
+  const image = evt.target.files[0];
+  const imageName = image.name.toLowerCase();
+
+  const matches = FILE_TYPES.some((fileType) => imageName.endsWith(fileType));
+
+  if (matches) {
+    const fileUrl = URL.createObjectURL(image);
+
+    imgUploadPreview.src = fileUrl;
+
+    effectsPreviews.forEach((preview) => (preview.style.backgroundImage = `url(${fileUrl})`));
+
+    openUploadForm();
+    return;
+  }
+
+  showMessage('error', ERROR_TYPE_FILE, ERROR_BUTTON_TEXT);
+};
+
+const onUploadInputChange = (evt) => {
+  fileChooser(evt);
+};
+
 const onUploadCancelClick = () => closeUploadForm();
 const onEffectsListChange = (evt) => initEffects(evt.target.value);
 

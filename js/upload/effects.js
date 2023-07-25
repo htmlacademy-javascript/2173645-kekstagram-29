@@ -51,6 +51,7 @@ const sliderContainer = document.querySelector('.img-upload__effect-level');
 const setContainerState = (value) => {
   if(value === 'none') {
     sliderContainer.classList.add('hidden');
+    imgUploadPreview.style.filter = 'none';
     return;
   }
   sliderContainer.classList.remove('hidden');
@@ -86,4 +87,4 @@ const initEffects = (value) => {
   createSlider(value);
 };
 
-export {initEffects};
+export {initEffects, imgUploadPreview};

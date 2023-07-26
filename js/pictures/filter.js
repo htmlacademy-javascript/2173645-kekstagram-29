@@ -1,6 +1,5 @@
 import {debounce} from '../utils/utils.js';
 import {renderMiniatures} from './render-miniatures.js';
-import {picturesContainer} from './render-miniatures.js';
 
 const RANDOM_PICTURE_COUNT = 10;
 const DELAY = 500;
@@ -12,7 +11,7 @@ const imgFiltersForm = imgFilters.querySelector('.img-filters__form');
 
 const sortByCommentsLength = (data) => data.slice().sort((a, b) => b.comments.length - a.comments.length);
 
-const sortRandom = (data) => {
+const sortByRandom = (data) => {
   const dataClone = data.slice();
 
   for (let i = dataClone.length - 1; i > 0; i--) {
@@ -26,7 +25,7 @@ const sortRandom = (data) => {
 const getFilteredData = (id, data) => {
   switch (id) {
     case FILTER_RANDOM:
-      return sortRandom(data);
+      return sortByRandom(data);
     case FILTER_DISCUSSED:
       return sortByCommentsLength(data);
     default:
@@ -35,7 +34,7 @@ const getFilteredData = (id, data) => {
 };
 
 const renderFilteredPictures = (id, data) => {
-  picturesContainer.querySelectorAll('.picture').forEach((picture) => picture.remove());
+  document.querySelectorAll('.picture').forEach((picture) => picture.remove());
   renderMiniatures(getFilteredData(id, data));
 };
 

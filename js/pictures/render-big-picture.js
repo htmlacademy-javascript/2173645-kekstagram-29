@@ -81,7 +81,7 @@ function onCommentsLoaderClick (evt) {
   fillCommentsList();
 }
 
-const fillBigPicture = ({url, description, likes, comments}) => {
+const fillBigPicture = (url, description, comments, likes) => {
   socialCaption.textContent = description;
   bigImg.src = url;
   likesCount.textContent = likes;
@@ -89,12 +89,12 @@ const fillBigPicture = ({url, description, likes, comments}) => {
   fillCommentsList();
 };
 
-const renderBigPicture = ({url, description, likes, comments}) => {
+const renderBigPicture = (url, description, comments, likes) => {
   arrayComments = comments;
   socialComments.innerHTML = '';
   socialFooterText.value = '';
   openModal();
-  fillBigPicture({url, description, likes, comments});
+  fillBigPicture(url, description, comments, likes);
 };
 
 export {renderBigPicture};

@@ -17,7 +17,7 @@ const createMiniature = ({url, description, comments, likes}) => {
 
   userPicture.addEventListener('click', (evt) => {
     evt.preventDefault();
-    renderBigPicture({url, description, comments, likes});
+    renderBigPicture(url, description, comments, likes);
   });
 
   fragment.append(userPicture);
@@ -28,6 +28,6 @@ const renderMiniatures = (pictures) => {
   picturesContainer.append(fragment);
 };
 
-export {renderMiniatures, picturesContainer};
+export {renderMiniatures};
 
 

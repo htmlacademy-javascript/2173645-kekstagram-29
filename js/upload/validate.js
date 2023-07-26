@@ -15,38 +15,40 @@ const pristine = new Pristine(uploadForm, {
 const validateForm = () => pristine.validate();
 const resetValidation = () => pristine.reset();
 
-const normalizeTags = (tagsString) => tagsString
+const createTags = (tagsString) => tagsString
   .trim()
   .split(' ')
   .filter((tag) => Boolean(tag.length));
 
-const isValidCount = (value) => normalizeTags(value).length <= MAX_HASHTAG_COUNT;
+const isValidCount = (value) => createTags(value).length <= MAX_HASHTAG_COUNT;
 
-const isValidHashtag = (value) => normalizeTags(value).every((tag) => HASHTAG_REGULAR.test(tag));
+const isValidHashtag = (value) => createTags(value).every((tag) => HASHTAG_REGULAR.test(tag));
 
-const hasNoRepeatHashtags = (value) => {
-  const lowerCaseHashtags = normalizeTags(value).map((tag) => tag.toLowerCase());
+const isNoRepeatHashtags = (value) => {
+  const lowerCaseHashtags = createTags(value).map((tag) => tag.toLowerCase());
   return lowerCaseHashtags.length === new Set(lowerCaseHashtags).size;
 };
 
-pristine.addValidator(
-  hashtagsInput,
-  isValidHashtag,
-  HASHTAG_INVALID_MESSAGE,
-  1,
-  true
-);
+const initValidator = () => {
+  pristine.addValidator(
+    hashtagsInput,
+    isValidHashtag,
+    HASHTAG_INVALID_MESSAGE,
+    1,
+    true
+  );
 
-pristine.addValidator(
-  hashtagsInput,
-  isValidCount,
-  HASHTAG_MAX_COUNT
-);
+  pristine.addValidator(
+    hashtagsInput,
+    isValidCount,
+    HASHTAG_MAX_COUNT
+  );
 
-pristine.addValidator(
-  hashtagsInput,
-  hasNoRepeatHashtags,
-  HASHTAG_REPEAT_MESSAGE
-);
+  pristine.addValidator(
+    hashtagsInput,
+    isNoRepeatHashtags,
+    HASHTAG_REPEAT_MESSAGE
+  );
+};
 
-export{validateForm, resetValidation};
+export{validateForm, resetValidation, initValidator};

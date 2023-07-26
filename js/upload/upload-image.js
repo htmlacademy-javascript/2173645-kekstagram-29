@@ -1,6 +1,6 @@
 import {initScale, resetScale} from './scale.js';
 import {isEscapeKey, isTextInput} from '../utils/utils.js';
-import {validateForm, resetValidation} from './validate.js';
+import {validateForm, resetValidation, initValidator} from './validate.js';
 import {initEffects, imgUploadPreview} from './effects.js';
 import {sendData} from '../utils/api.js';
 import {showMessage} from '../utils/messages.js';
@@ -97,6 +97,7 @@ const initUploadForm = () => {
   uploadForm.addEventListener('submit', onUploadFormSubmit);
   uploadCancel.addEventListener('click', onUploadCancelClick);
   initScale();
+  initValidator();
   initEffects(currentEffectValue);
   effectsList.addEventListener('change', onEffectsListChange);
   validateForm();

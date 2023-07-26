@@ -1,5 +1,5 @@
 import {getData} from '../utils/api.js';
-import {renderMiniatures} from '../pictures/render-miniatures.js';
+import {renderMiniatures} from './render-miniatures.js';
 import {showMessage} from '../utils/messages.js';
 import {initFilters, getFilteredData} from './filter.js';
 

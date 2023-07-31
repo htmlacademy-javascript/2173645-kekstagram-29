@@ -64,7 +64,9 @@ const fileChooser = (evt) => {
 
     imgUploadPreview.src = fileUrl;
 
-    effectsPreviews.forEach((preview) => (preview.style.backgroundImage = `url(${fileUrl})`));
+    effectsPreviews.forEach((preview) => {
+      preview.style.backgroundImage = `url(${fileUrl})`;
+    });
 
     openUploadForm();
     return;
